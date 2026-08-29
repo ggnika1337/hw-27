@@ -32,6 +32,11 @@ export class UsersController {
     return this.usersService.getUsers(PaginationDto);
   }
 
+  @Get('/sortByGender')
+  sortByGender() {
+    return this.usersService.sortedByGender();
+  }
+
   @Get(':id')
   getById(@Param('id') id: string) {
     return this.usersService.getUserById(id);

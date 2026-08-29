@@ -67,6 +67,16 @@ export class UsersService {
     });
   }
 
+  async sortedByGender() {
+    return this.userModel.aggregate([
+      {
+        $group: {
+          _id: '$gender',
+          averageAge: { $avg: '$age' },
+        },
+      },
+    ]);
+  }
   // check if user subscription is valid
   async isSubscriptionValid(email: string): Promise<boolean> {
     const user = await this.userModel.findOne({ email });
