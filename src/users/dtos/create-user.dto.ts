@@ -1,0 +1,20 @@
+import { isBoolean, IsNumber, IsString } from 'class-validator';
+export class CreateUserDto {
+  @IsString()
+  fullName!: string;
+
+  @IsString()
+  email!: string;
+
+  @IsString()
+  gender!: string;
+
+  @IsNumber()
+  phoneNumber!: number;
+
+  @IsNumber()
+  age!: number;
+
+  @isBoolean()
+  isActive!: boolean;
+}
