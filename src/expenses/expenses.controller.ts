@@ -17,8 +17,8 @@ import { IsAuthGuard } from 'src/guards/isAuth.guard';
 import { UserId } from 'src/users/decorators/user.decorator';
 import { Throttle, ThrottlerGuard } from '@nestjs/throttler';
 
-@UseGuards(ThrottlerGuard)
-@Throttle({ default: { limit: 25, ttl: 60000 } })
+// @UseGuards(ThrottlerGuard)
+// @Throttle({ default: { limit: 25, ttl: 60000 } })
 @Controller('expenses')
 @UseGuards(IsAuthGuard)
 export class ExpensesController {
@@ -30,6 +30,14 @@ export class ExpensesController {
     @Query() PaginationDto: ExpenseQueries,
   ) {
     return this.expensesService.getExpenses(userId, PaginationDto);
+  }
+
+  @Get('/statistic/:expenseCategory')
+  getStatistics(
+    @Param('expenseCategory') expenseCategory: string,
+    @UserId() userId: string,
+  ) {
+    return this.expensesService.getStatistics(expenseCategory, userId);
   }
 
   @Get(':id')

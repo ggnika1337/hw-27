@@ -10,7 +10,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UserQuery } from './dtos/userQuery.dto';
 import { IsAuthGuard } from 'src/guards/isAuth.guard';

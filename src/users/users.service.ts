@@ -20,17 +20,17 @@ export class UsersService {
   ) {}
 
   async onModuleInit() {
-    await this.userModel.updateMany(
-      {},
-      {
-        $set: {
-          isActive: true,
-        },
-        $inc: {
-          __v: 1,
-        },
-      },
-    );
+    // await this.userModel.updateMany(
+    //   {},
+    //   {
+    //     $set: {
+    //       isActive: true,
+    //     },
+    //     $inc: {
+    //       __v: 1,
+    //     },
+    //   },
+    // );
   }
 
   async findByEmail(
