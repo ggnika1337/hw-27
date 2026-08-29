@@ -19,6 +19,20 @@ export class UsersService {
     private readonly userModel: Model<User>,
   ) {}
 
+  async onModuleInit() {
+    await this.userModel.updateMany(
+      {},
+      {
+        $set: {
+          isActive: true,
+        },
+        $inc: {
+          __v: 1,
+        },
+      },
+    );
+  }
+
   async findByEmail(
     email: string,
     includePassword = false,

@@ -27,7 +27,9 @@ export class User {
   @Prop()
   subEnd!: Date;
 
-  @Prop()
+  @Prop({
+    default: false,
+  })
   isActive!: boolean;
 
   @Prop({
