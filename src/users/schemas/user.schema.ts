@@ -42,6 +42,9 @@ export class User {
     default: [],
   })
   expenses!: Types.ObjectId[];
+
+  @Prop({ default: 0 })
+  totalSpent!: number;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

@@ -34,6 +34,10 @@ export class ExpensesService {
       .limit(take);
   }
 
+  async getTopSpenders() {
+    return this.expenseModel.find();
+  }
+
   async getStatistics(category: string, userId: string) {
     const user = await this.userModel.findById(userId);
 
@@ -70,6 +74,7 @@ export class ExpensesService {
 
     await this.userModel.findByIdAndUpdate(user._id, {
       $push: { expenses: expense._id },
+      $inc: { totalSpent: dto.quantity * dto.price },
     });
 
     return expense;

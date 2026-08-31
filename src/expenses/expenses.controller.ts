@@ -32,6 +32,11 @@ export class ExpensesController {
     return this.expensesService.getExpenses(userId, PaginationDto);
   }
 
+  @Get('/top-spenders')
+  getTopSpenders() {
+    return this.expensesService.getTopSpenders();
+  }
+
   @Get('/statistic/:expenseCategory')
   getStatistics(
     @Param('expenseCategory') expenseCategory: string,
