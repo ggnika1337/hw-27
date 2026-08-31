@@ -35,7 +35,11 @@ export class ExpensesService {
   }
 
   async getTopSpenders() {
-    return this.expenseModel.find();
+    return this.userModel
+      .find()
+      .select('_id fullName totalSpent')
+      .sort({ totalSpent: -1 })
+      .limit(10);
   }
 
   async getStatistics(category: string, userId: string) {
